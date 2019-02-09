@@ -1,0 +1,9 @@
+# twitter credentials
+TW_CONSUMER_KEY = 'HO0JFLVoiVfXuIDzIVoyrIlUL'
+TW_CONSUMER_SECRET = 'Tnv4NI3LEwqnVmjSzCsNem2tTiH8ZrYscnmwN5Gmw2J30C2ZwV'
+TW_ACCESS_TOKEN = '1094173736129855488-9n4qdUJkSvkNJOYA7SK8XQ12BIzYr7'
+TW_ACCESS_TOKEN_SECRET = 'GfbyjzC9VxnXeJ12uKyKaC8vuglHwRSlh9ABmIxOEaeAu'
+
+# facebook credentials
+
+# youtube credentials
