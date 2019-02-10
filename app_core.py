@@ -6,6 +6,9 @@ from tweepy import Stream
 
 from apps import credentials as crd
 
+import pandas as pd
+import numpy as np
+
 
 # # # # TWITTER CLIENT # # # #
 class TwitterClient():
@@ -20,7 +23,7 @@ class TwitterClient():
             tweets.append(tweet)
         return tweets
 
-    def get_user_list(self, num_friends):
+    def get_friend_list(self, num_friends):
         friend_list = []
         for friend in Cursor(self.twitter_client.friends).items(num_friends):
             friend_list.append(friend)
@@ -31,6 +34,9 @@ class TwitterClient():
         for tweet in Cursor(self.twitter_client.home_timeline).items(num_tweets):
             home_timeline_tweets.append(tweet)
         return home_timeline_tweets
+
+    def get_twitter_client_api(self):
+        return self.twitter_client
 
 
 # # # # TWITTER AUTHENTICATER # # # #
@@ -86,10 +92,36 @@ class TwitterListener(StreamListener):
         print(status)
 
 
-if __name__ == '__main__':
-    # Authenticate using config.py and connect to Twitter Streaming API.
-    hash_tag_list = ["donal trump", "hillary clinton", "barack obama", "bernie sanders"]
-    fetched_tweets_filename = "tweets.txt"
+class TwitterAnalyzer():
+    """
+    Functionality for analyzing and categorizing content from tweets
+    """
 
-    twitter_client = TwitterClient('pycon')
-    print(twitter_client.get_user_timeline_tweets(1))
+    def tweets_to_data_frame(self, tweets):
+        df = pd.DataFrame(data=[(tweet.id,
+                                 tweet.created_at,
+                                 tweet.text,
+                                 tweet.source,
+                                 tweet.favorite_count,
+                                 tweet.retweet_count) for tweet in tweets],
+                          columns=['id', 'date', 'tweets', 'source', 'likes', 'retweets']
+                          )
+        return df
+
+
+if __name__ == '__main__':
+    twitter_client = TwitterClient()
+    tweet_analyzer = TwitterAnalyzer()
+    api = twitter_client.get_twitter_client_api()
+
+    tweets1 = api.user_timeline(screen_name='pbaconnect', count=20)
+    tweets2 = api.user_timeline(screen_name='realDonaldTrump', count=20)
+
+    df1 = tweet_analyzer.tweets_to_data_frame(tweets1)
+    df2 = tweet_analyzer.tweets_to_data_frame(tweets2)
+
+    df3 = pd.concat([df1, df2])
+    df3.reset_index(inplace=True)
+
+    print(df3)
+
