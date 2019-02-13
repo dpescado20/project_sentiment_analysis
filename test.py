@@ -2,7 +2,7 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 
-from apps import credentials as crd
+import credentials as crd
 
 
 class StdOutListener(StreamListener):

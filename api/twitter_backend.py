@@ -4,10 +4,9 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 
-from apps import credentials as crd
+import credentials as crd
 
 import pandas as pd
-import numpy as np
 
 
 # # # # TWITTER CLIENT # # # #
@@ -124,4 +123,3 @@ if __name__ == '__main__':
     df3.reset_index(inplace=True)
 
     print(df3)
-
