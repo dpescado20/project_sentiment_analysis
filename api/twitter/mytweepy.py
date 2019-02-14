@@ -4,9 +4,10 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 
-import credentials as crd
-
-import pandas as pd
+TW_CONSUMER_KEY = 'HO0JFLVoiVfXuIDzIVoyrIlUL'
+TW_CONSUMER_SECRET = 'Tnv4NI3LEwqnVmjSzCsNem2tTiH8ZrYscnmwN5Gmw2J30C2ZwV'
+TW_ACCESS_TOKEN = '1094173736129855488-9n4qdUJkSvkNJOYA7SK8XQ12BIzYr7'
+TW_ACCESS_TOKEN_SECRET = 'GfbyjzC9VxnXeJ12uKyKaC8vuglHwRSlh9ABmIxOEaeAu'
 
 
 # # # # TWITTER CLIENT # # # #
@@ -41,8 +42,8 @@ class TwitterClient():
 # # # # TWITTER AUTHENTICATER # # # #
 class TwitterAuthenticator():
     def authenticate_twitter_app(self):
-        auth = OAuthHandler(crd.TW_CONSUMER_KEY, crd.TW_CONSUMER_SECRET)
-        auth.set_access_token(crd.TW_ACCESS_TOKEN, crd.TW_ACCESS_TOKEN_SECRET)
+        auth = OAuthHandler(TW_CONSUMER_KEY, TW_CONSUMER_SECRET)
+        auth.set_access_token(TW_ACCESS_TOKEN, TW_ACCESS_TOKEN_SECRET)
         return auth
 
 
@@ -91,35 +92,8 @@ class TwitterListener(StreamListener):
         print(status)
 
 
-class TwitterAnalyzer():
-    """
-    Functionality for analyzing and categorizing content from tweets
-    """
+client = TwitterClient()
+api = client.get_twitter_client_api()
+tweets = client.get_user_timeline_tweets(2)
 
-    def tweets_to_data_frame(self, tweets):
-        df = pd.DataFrame(data=[(tweet.id,
-                                 tweet.created_at,
-                                 tweet.text,
-                                 tweet.source,
-                                 tweet.favorite_count,
-                                 tweet.retweet_count) for tweet in tweets],
-                          columns=['id', 'date', 'tweets', 'source', 'likes', 'retweets']
-                          )
-        return df
-
-
-if __name__ == '__main__':
-    twitter_client = TwitterClient()
-    tweet_analyzer = TwitterAnalyzer()
-    api = twitter_client.get_twitter_client_api()
-
-    tweets1 = api.user_timeline(screen_name='pbaconnect', count=20)
-    tweets2 = api.user_timeline(screen_name='realDonaldTrump', count=20)
-
-    df1 = tweet_analyzer.tweets_to_data_frame(tweets1)
-    df2 = tweet_analyzer.tweets_to_data_frame(tweets2)
-
-    df3 = pd.concat([df1, df2])
-    df3.reset_index(inplace=True)
-
-    print(df3)
+print(tweets)
