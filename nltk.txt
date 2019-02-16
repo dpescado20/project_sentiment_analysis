@@ -10,7 +10,6 @@ conll2000
 conll2002
 ieer
 wordnet
-fetch_20newsgroups
 masc_tagged
 gutenberg
 inaugural
