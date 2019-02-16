@@ -1,3 +1,12 @@
-wordnet
-pros_cons
-reuters
+Liu and Hu opinion lexicon
+SentiWordNet
+SentiWords
+AFINN
+WordStat Sentiment Dictionary
+SenticNet
+the Affective Norms for English Words
+the Whissell Dictionary of Affect in Language
+Pattern
+Sentiment140 Lexicon
+Linguistic Inquiry and Word Count
+the MPQA Subjectivity Lexicon.
