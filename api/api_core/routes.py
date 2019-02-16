@@ -5,9 +5,9 @@ from .services_youtube import YoutubeClient, YoutubeAnalyser
 
 app_api = Blueprint('api', __name__)
 api = Api(app=app_api)
-ns_twitter = api.namespace('twitter', description='Twitter Sentiments')
-ns_facebook = api.namespace('facebook', description='Facebook Sentiments')
-ns_youtube = api.namespace('youtube', description='Youtube Sentiments')
+ns_twitter = api.namespace('twitter', description='Twitter Sentiments Score')
+ns_facebook = api.namespace('facebook', description='Facebook Sentiments Score')
+ns_youtube = api.namespace('youtube', description='Youtube Sentiments Score')
 
 
 # # # # YOUTUBE ROUTES # # # #
