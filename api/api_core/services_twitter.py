@@ -4,6 +4,8 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 TW_CONSUMER_KEY = 'HO0JFLVoiVfXuIDzIVoyrIlUL'
 TW_CONSUMER_SECRET = 'Tnv4NI3LEwqnVmjSzCsNem2tTiH8ZrYscnmwN5Gmw2J30C2ZwV'
 TW_ACCESS_TOKEN = '1094173736129855488-9n4qdUJkSvkNJOYA7SK8XQ12BIzYr7'
@@ -92,8 +94,24 @@ class TwitterListener(StreamListener):
         print(status)
 
 
-client = TwitterClient()
-api = client.get_twitter_client_api()
-tweets = client.get_user_timeline_tweets(2)
+# # # # TWITTER TWEET ANALYZER # # # #
+class TwitterAnalyser():
+    """
+    Functionality for analyzing and categorizing content from tweets.
+    """
 
-print(tweets)
+    def __init__(self, tweets):
+        self.tweets = tweets
+        self.tweets_str = self.tweets_to_string()
+
+    def tweet_analyser_scores(self):
+        analyser = SentimentIntensityAnalyzer()
+        score = analyser.polarity_scores(self.tweets_str)
+        return score
+
+    def tweets_to_string(self):
+        tweets_list = []
+        for tweet in self.tweets:
+            tweets_list.append(tweet.text)
+        tweet_str = ','.join(tweets_list)
+        return tweet_str
