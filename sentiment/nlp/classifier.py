@@ -2,7 +2,7 @@ from nltk import classify
 from nltk import NaiveBayesClassifier
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import TweetTokenizer
-from nltk.corpus import twitter_samples, stopwords
+from nltk.corpus import twitter_samples, stopwords, movie_reviews
 from nltk.metrics import precision, recall, f_measure, ConfusionMatrix
 
 import re
@@ -86,16 +86,19 @@ class Classifier:
         shuffle(pos_tweets_set)
         shuffle(neg_tweets_set)
 
-        test_set = pos_tweets_set[:1000] + neg_tweets_set[:1000]
-        train_set = pos_tweets_set[1000:] + neg_tweets_set[1000:]
+        pos_count = int(len(pos_tweets) * 0.20)
+        neg_count = int(len(neg_tweets) * 0.20)
+
+        test_set = pos_tweets_set[:pos_count] + neg_tweets_set[:neg_count]
+        train_set = pos_tweets_set[pos_count:] + neg_tweets_set[neg_count:]
         return {'test_set': test_set, 'train_set': train_set}
 
-    def train(self, train_test_set):
+    def train_classifier(self, train_test_set):
         classifier = NaiveBayesClassifier.train(train_test_set['train_set'])
         accuracy = classify.accuracy(classifier, train_test_set['test_set'])
         return classifier
 
-    def metrics(self, classifier, test_set):
+    def metrics_classifier(self, classifier, test_set):
         # Precision, Recall & F1-Score
         actual_set = defaultdict(set)
         predicted_set = defaultdict(set)
@@ -130,12 +133,13 @@ class Classifier:
     def save_model(self, classifier):
         with open('./sentiment/nlp/text_classifier', 'wb') as picklefile:
             pickle.dump(classifier, picklefile)
-        return print('model successfully save')
+        return print('model successfully saved')
 
     # # # # LOADING THE MODEL # # # #
     def load_model(self):
         with open('./sentiment/nlp/text_classifier', 'rb') as training_model:
             model = pickle.load(training_model)
+            print('model successfully loaded')
         return model
 
     # # # # CUSTOM TWEET # # # #

@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_restplus import Api, Resource
-from .services_twitter import TwitterClient, TwitterAnalyzer
+from .services_twitter import TwitterClient
 from .services_youtube import YoutubeClient, YoutubeAnalyser
 
 app_api = Blueprint('api', __name__, url_prefix='/api')

@@ -4,12 +4,21 @@ from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 
-from sentiment.nlp.classifier import Classifier
+# from sentiment.nlp.classifier import Classifier
+import pandas as pd
+import json
+from datetime import datetime
+import time
+import collections
 
 TW_CONSUMER_KEY = 'HO0JFLVoiVfXuIDzIVoyrIlUL'
 TW_CONSUMER_SECRET = 'Tnv4NI3LEwqnVmjSzCsNem2tTiH8ZrYscnmwN5Gmw2J30C2ZwV'
 TW_ACCESS_TOKEN = '1094173736129855488-9n4qdUJkSvkNJOYA7SK8XQ12BIzYr7'
 TW_ACCESS_TOKEN_SECRET = 'GfbyjzC9VxnXeJ12uKyKaC8vuglHwRSlh9ABmIxOEaeAu'
+
+
+# cla = Classifier()
+# model = cla.load_model()
 
 
 # # # # TWITTER CLIENT # # # #
@@ -65,7 +74,7 @@ class TwitterStreamer:
         stream = Stream(auth, listener)
 
         # This line filter Twitter Streams to capture data by the keywords:
-        stream.filter(track=hash_tag_list, is_async=True)
+        stream.filter(track=hash_tag_list, languages=['en,tl'], is_async=True)
 
 
 # # # # TWITTER STREAM LISTENER # # # #
@@ -74,22 +83,20 @@ class TwitterListener(StreamListener):
     This is a basic listener that just prints received tweets to stdout.
     """
 
-    # def __init__(self, fetched_tweets_filename):
-    #    super().__init__()
-    #    self.fetched_tweets_filename = fetched_tweets_filename
+    def __init__(self):  # fetched_tweets_filename
+        super(TwitterListener).__init__()
+        # self.fetched_tweets_filename = fetched_tweets_filename
+        self.num_tweets = 0
 
     def on_data(self, data):
-        try:
-            # print(data)
-            # with open('./social_media/{}.txt'.format(self.fetched_tweets_filename), 'a') as tf:
-            #    tf.write(data)
-            # tweets = json.loads(data)
-            with open('./sentiment/api/tweets_data.txt', 'a') as tf:
+        if self.num_tweets < 100:
+            with open('./sentiment/api/stream_tweets.json', 'a') as tf:
                 tf.write(data)
+            print(self.num_tweets)
+            self.num_tweets += 1
             return True
-        except BaseException as e:
-            print("Error on_data %s" % str(e))
-        return True
+        else:
+            return False
 
     def on_error(self, status):
         if status == 420:
@@ -98,7 +105,7 @@ class TwitterListener(StreamListener):
         print(status)
 
 
-class TwitterAnalyzer:
+'''class TwitterAnalyzer:
     def __init__(self, tweets):
         self.tweets = tweets
         self.cla = Classifier()
@@ -106,4 +113,4 @@ class TwitterAnalyzer:
 
     def score(self):
         sentiment = self.cla.sentiment(self.model, self.tweets)
-        return sentiment
+        return sentiment'''
