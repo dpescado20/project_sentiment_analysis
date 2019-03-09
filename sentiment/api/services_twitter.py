@@ -4,21 +4,12 @@ from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 
-# from sentiment.nlp.classifier import Classifier
-import pandas as pd
-import json
-from datetime import datetime
 import time
-import collections
 
 TW_CONSUMER_KEY = 'HO0JFLVoiVfXuIDzIVoyrIlUL'
 TW_CONSUMER_SECRET = 'Tnv4NI3LEwqnVmjSzCsNem2tTiH8ZrYscnmwN5Gmw2J30C2ZwV'
 TW_ACCESS_TOKEN = '1094173736129855488-9n4qdUJkSvkNJOYA7SK8XQ12BIzYr7'
 TW_ACCESS_TOKEN_SECRET = 'GfbyjzC9VxnXeJ12uKyKaC8vuglHwRSlh9ABmIxOEaeAu'
-
-
-# cla = Classifier()
-# model = cla.load_model()
 
 
 # # # # TWITTER CLIENT # # # #
@@ -86,14 +77,13 @@ class TwitterListener(StreamListener):
     def __init__(self):  # fetched_tweets_filename
         super(TwitterListener).__init__()
         # self.fetched_tweets_filename = fetched_tweets_filename
-        self.num_tweets = 0
+        self.start_time = time.time()
+        self.limit = 60
 
     def on_data(self, data):
-        if self.num_tweets < 100:
+        if (time.time() - self.start_time) < self.limit:
             with open('./sentiment/api/stream_tweets.json', 'a') as tf:
                 tf.write(data)
-            print(self.num_tweets)
-            self.num_tweets += 1
             return True
         else:
             return False
@@ -103,14 +93,3 @@ class TwitterListener(StreamListener):
             # Returning False on_data method in case rate limit occurs
             return False
         print(status)
-
-
-'''class TwitterAnalyzer:
-    def __init__(self, tweets):
-        self.tweets = tweets
-        self.cla = Classifier()
-        self.model = self.cla.load_model()
-
-    def score(self):
-        sentiment = self.cla.sentiment(self.model, self.tweets)
-        return sentiment'''

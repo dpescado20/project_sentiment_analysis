@@ -95,7 +95,7 @@ class Classifier:
 
     def train_classifier(self, train_test_set):
         classifier = NaiveBayesClassifier.train(train_test_set['train_set'])
-        accuracy = classify.accuracy(classifier, train_test_set['test_set'])
+        # accuracy = classify.accuracy(classifier, train_test_set['test_set'])
         return classifier
 
     def metrics_classifier(self, classifier, test_set):
