@@ -19,7 +19,6 @@ dash-renderer==0.20.0
 dash-table==3.6.0
 decorator==4.4.0
 emoji==0.5.1
-en-core-web-sm==2.1.0
 facebook-scraper==0.1.1
 fake-useragent==0.1.11
 Flask==1.0.2
