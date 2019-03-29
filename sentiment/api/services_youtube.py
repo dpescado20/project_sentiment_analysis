@@ -1,22 +1,19 @@
 from googleapiclient.discovery import build
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 api_key = 'AIzaSyD9xwls_UC1qFXe5AiZOuQ34DMBAyyypPg'
 
 
 # # # # YOUTUBE COMMENTS ANALYSER # # # #
-class YoutubeAnalyser():
+class YoutubeAnalyser:
     def __init__(self, comments):
         self.comments = comments
 
     def tweet_analyser_scores(self):
-        analyser = SentimentIntensityAnalyzer()
-        score = analyser.polarity_scores(self.comments)
-        return score
+        return True
 
 
 # # # # YOUTUBE COMMENTS GENERATOR # # # #
-class YoutubeClient():
+class YoutubeClient:
     def __init__(self):
         self.youtube = build('youtube', 'v3', developerKey=api_key)
 
@@ -41,6 +38,9 @@ class YoutubeClient():
             res2 = com.execute()
 
             for item in res2['items']:
-                comments.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
-        comments_str = ','.join(comments)
-        return comments_str
+                comments.append((
+                    item['snippet']['topLevelComment']['snippet']['publishedAt'],
+                    item['snippet']['topLevelComment']['snippet']['textDisplay']
+                ))
+        # comments_str = ','.join(comments)
+        return comments

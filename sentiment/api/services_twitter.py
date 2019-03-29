@@ -82,10 +82,12 @@ class TwitterListener(StreamListener):
 
     def on_data(self, data):
         if (time.time() - self.start_time) < self.limit:
+            print(data)
             with open('./sentiment/api/stream_tweets.json', 'a') as tf:
                 tf.write(data)
             return True
         else:
+            print('DONE STREAMING')
             return False
 
     def on_error(self, status):
