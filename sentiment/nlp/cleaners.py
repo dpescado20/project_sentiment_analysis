@@ -3,6 +3,7 @@ import emoji
 from bs4 import BeautifulSoup
 
 import spacy
+import en_core_web_sm
 from spacy.lang.en.stop_words import STOP_WORDS
 from spacy.lang.en import English
 from textacy import preprocess
@@ -72,7 +73,8 @@ class Cleaners:
         }
 
         # SPACY INITIALIZATION
-        self.nlp = spacy.load('en_core_web_sm')
+        # self.nlp = spacy.load('en_core_web_sm')
+        self.nlp = en_core_web_sm.load()
         self.stopwords = list(STOP_WORDS)
         self.punctuations = string.punctuation
         self.parser = English()

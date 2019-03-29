@@ -19,7 +19,6 @@ dash-renderer==0.20.0
 dash-table==3.6.0
 decorator==4.4.0
 emoji==0.5.1
-en-core-web-sm==2.1.0
 facebook-scraper==0.1.1
 fake-useragent==0.1.11
 Flask==1.0.2
@@ -75,6 +74,7 @@ singledispatch==3.4.0.3
 six==1.12.0
 soupsieve==1.8
 spacy==2.1.1
+https://github.com/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz#egg=en_core_web_sm
 srsly==0.0.5
 textacy==0.6.2
 thinc==7.0.4
