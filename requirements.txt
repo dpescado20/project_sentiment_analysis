@@ -43,7 +43,7 @@ msgpack==0.6.1
 murmurhash==1.0.2
 nbformat==4.4.0
 networkx==2.2
-nltk==3.4
+nltk==3.4.5
 numpy==1.16.2
 oauthlib==3.0.1
 pandas==0.24.2
