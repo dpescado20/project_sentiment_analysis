@@ -26,6 +26,7 @@ fake-useragent==0.1.11
 Flask==1.1.1
 Flask-Compress==1.4.0
 flask-restplus==0.13.0
+ftfy==5.6
 future==0.18.2
 google-api-python-client==1.7.11
 google-auth==1.7.1
@@ -83,6 +84,7 @@ uritemplate==3.0.0
 urllib3==1.25.7
 w3lib==1.21.0
 wasabi==0.4.0
+wcwidth==0.1.7
 websockets==8.1
 Werkzeug==0.16.0
 zipp==0.6.0

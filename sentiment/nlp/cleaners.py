@@ -1,12 +1,13 @@
-import string, re
-import emoji
-from bs4 import BeautifulSoup
+import re
+import string
 
-import spacy
+import emoji
 import en_core_web_sm
-from spacy.lang.en.stop_words import STOP_WORDS
+from bs4 import BeautifulSoup
 from spacy.lang.en import English
+from spacy.lang.en.stop_words import STOP_WORDS
 from textacy import preprocess
+import ftfy
 
 
 class Cleaners:
@@ -82,7 +83,8 @@ class Cleaners:
     # CLEAN TEXT
     def clean_tweet(self, text):
         # FIXED UNICODE
-        text = preprocess.fix_bad_unicode(text)
+        # text = preprocess.fix_bad_unicode(text)
+        text = ftfy.fix_text(text)
 
         # GET TEXT ONLY FROM HTML
         text = BeautifulSoup(text, features='lxml').getText()
