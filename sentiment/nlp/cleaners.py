@@ -6,7 +6,7 @@ import en_core_web_sm
 from bs4 import BeautifulSoup
 from spacy.lang.en import English
 from spacy.lang.en.stop_words import STOP_WORDS
-from textacy import preprocess
+from textacy import preprocessing, preprocess
 import ftfy
 
 
@@ -88,26 +88,33 @@ class Cleaners:
 
         # GET TEXT ONLY FROM HTML
         text = BeautifulSoup(text, features='lxml').getText()
+
         # UN-PACK CONTRACTIONS
         text = preprocess.unpack_contractions(text)
 
         # REMOVE URL
-        text = preprocess.replace_urls(text)
+        # text = preprocess.replace_urls(text)
+        text = preprocessing.replace_urls(text)
 
         # REMOVE EMAILS
-        text = preprocess.replace_emails(text)
+        # text = preprocess.replace_emails(text)
+        text = preprocessing.replace_emails(text)
 
         # REMOVE PHONE NUMBERS
-        text = preprocess.replace_phone_numbers(text)
+        # text = preprocess.replace_phone_numbers(text)
+        text = preprocessing.replace_phone_numbers(text)
 
         # REMOVE NUMBERS
-        text = preprocess.replace_numbers(text)
+        # text = preprocess.replace_numbers(text)
+        text = preprocessing.replace_numbers(text)
 
         # REMOVE CURRENCY
-        text = preprocess.replace_currency_symbols(text)
+        # text = preprocess.replace_currency_symbols(text)
+        text = preprocessing.replace_currency_symbols(text)
 
         # REMOVE ACCENTS
-        text = preprocess.remove_accents(text)
+        # text = preprocess.remove_accents(text)
+        text = preprocessing.remove_accents(text)
 
         # CONVERT EMOJIS TO TEXT
         words = text.split()
@@ -124,7 +131,8 @@ class Cleaners:
         text = text.replace('_', ' ')
 
         # REMOVE PUNCTUATION
-        text = preprocess.remove_punct(text)
+        # text = preprocess.remove_punct(text)
+        text = preprocessing.remove_punctuation(text)
 
         # Remove numbers
         text = re.sub(r'\d', '', text)
@@ -133,7 +141,8 @@ class Cleaners:
         text = re.sub(r'\b\w{1,2}\b', '', text)
 
         # NORMALIZE WHITESPACE
-        text = preprocess.normalize_whitespace(text)
+        # text = preprocess.normalize_whitespace(text)
+        text = preprocessing.normalize_whitespace(text)
 
         return text
 

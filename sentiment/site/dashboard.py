@@ -147,6 +147,7 @@ __reddit = dbc.Container(
 )
 
 dashapp.layout = html.Div([__navbar, __metrics, __upper, __overview, __twitter, __youtube, __facebook, __reddit])
+# dashapp.layout = html.Div([__navbar, __metrics, __upper, __overview, __twitter])
 
 
 @dashapp.callback(
@@ -172,27 +173,23 @@ def update_twitter_container(n_clicks, value):
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                dbc.CardTitle(html.H5('SENTIMENT')),
-                                dbc.CardText(
-                                    [
-                                        dcc.Graph(
-                                            # FIGURE DONUT GRAPH
-                                            figure=go.Figure(
-                                                data=[
-                                                    go.Pie(
-                                                        values=[pos, neg],
-                                                        labels=['Positive', 'Negative'],
-                                                        hoverinfo='label+percent',
-                                                        hole=0.4
-                                                    )
-                                                ],
-                                                layout=go.Layout(
-                                                    margin=go.layout.Margin(l=40, r=0, t=40, b=30)
-                                                )
-                                            ),
-                                            style={'height': 300}
+                                html.H5('SENTIMENT', className='card-title'),
+                                dcc.Graph(
+                                    # FIGURE DONUT GRAPH
+                                    figure=go.Figure(
+                                        data=[
+                                            go.Pie(
+                                                values=[pos, neg],
+                                                labels=['Positive', 'Negative'],
+                                                hoverinfo='label+percent',
+                                                hole=0.4
+                                            )
+                                        ],
+                                        layout=go.Layout(
+                                            margin=go.layout.Margin(l=40, r=0, t=40, b=30)
                                         )
-                                    ]
+                                    ),
+                                    style={'height': 300}
                                 )
                             ]
                         )
@@ -219,15 +216,15 @@ def update_twitter_container(n_clicks, value):
                 dbc.Card(
                     dbc.CardBody(
                         [
-                            dbc.CardTitle(html.H5('TWEETS ({})'.format(df_row))),
-                            dbc.CardText(dashtable.DataTable(
+                            html.H5('TWEETS ({})'.format(df_row), className='card-title'),
+                            dashtable.DataTable(
                                 data=df_original.to_dict('rows'),
                                 columns=[{'id': i, 'name': i} for i in df_original.columns],
                                 style_table={
                                     'maxHeight': 300,
                                     'overflowY': 'scroll'
                                 },
-                                n_fixed_rows=1,
+                                fixed_rows=1,
                                 style_cell={
                                     # all three widths are needed
                                     'maxWidth': '100px',
@@ -241,7 +238,7 @@ def update_twitter_container(n_clicks, value):
                                 }],
                                 style_as_list_view=True,
                                 style_header={'fontWeight': 'bold', }
-                            ))
+                            )
                         ]
                     )
                 )
@@ -253,25 +250,21 @@ def update_twitter_container(n_clicks, value):
                 dbc.Card(
                     dbc.CardBody(
                         [
-                            dbc.CardTitle(html.H5('WORD FREQUENCY')),
-                            dbc.CardText(
-                                [
-                                    dcc.Graph(
-                                        figure=go.Figure(
-                                            data=[
-                                                go.Bar(
-                                                    x=df_bow.Word,
-                                                    y=df_bow.Count,
-                                                    name='Word'
-                                                )
-                                            ],
-                                            layout=go.Layout(
-                                                margin=go.layout.Margin(l=40, r=0, t=40, b=80)
-                                            )
-                                        ),
-                                        style={'height': 300}
+                            html.H5('WORD FREQUENCY', className='card-title'),
+                            dcc.Graph(
+                                figure=go.Figure(
+                                    data=[
+                                        go.Bar(
+                                            x=df_bow.Word,
+                                            y=df_bow.Count,
+                                            name='Word'
+                                        )
+                                    ],
+                                    layout=go.Layout(
+                                        margin=go.layout.Margin(l=40, r=0, t=40, b=80)
                                     )
-                                ]
+                                ),
+                                style={'height': 300}
                             )
                         ]
                     )
@@ -281,7 +274,6 @@ def update_twitter_container(n_clicks, value):
     ]
 
     return children
-
 
 @dashapp.callback(
     Output('card-body-youtube', 'children'),
@@ -306,8 +298,8 @@ def update_youtube_container(n_clicks, value):
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                dbc.CardTitle(html.H5('SENTIMENT')),
-                                dbc.CardText(
+                                html.H5('SENTIMENT',className='card-title'),
+                                html.Div(
                                     [
                                         dcc.Graph(
                                             # FIGURE DONUT GRAPH
@@ -354,15 +346,15 @@ def update_youtube_container(n_clicks, value):
                 dbc.Card(
                     dbc.CardBody(
                         [
-                            dbc.CardTitle(html.H5('COMMENTS ({})'.format(df_row))),
-                            dbc.CardText(dashtable.DataTable(
+                            html.H5('COMMENTS ({})'.format(df_row), className='card-title'),
+                            html.Div(dashtable.DataTable(
                                 data=df_original.to_dict('rows'),
                                 columns=[{'id': i, 'name': i} for i in df_original.columns],
                                 style_table={
                                     'maxHeight': 300,
                                     'overflowY': 'scroll'
                                 },
-                                n_fixed_rows=1,
+                                fixed_rows=1,
                                 style_cell={
                                     # all three widths are needed
                                     'maxWidth': '100px',
@@ -388,8 +380,8 @@ def update_youtube_container(n_clicks, value):
                 dbc.Card(
                     dbc.CardBody(
                         [
-                            dbc.CardTitle(html.H5('WORD FREQUENCY')),
-                            dbc.CardText(
+                            html.H5('WORD FREQUENCY', className='card-title'),
+                            html.Div(
                                 [
                                     dcc.Graph(
                                         figure=go.Figure(
@@ -440,8 +432,8 @@ def update_facebook_container(n_clicks, value):
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                dbc.CardTitle(html.H5('SENTIMENT')),
-                                dbc.CardText(
+                                html.H5('SENTIMENT', className='card-title'),
+                                html.Div(
                                     [
                                         dcc.Graph(
                                             # FIGURE DONUT GRAPH
@@ -488,15 +480,15 @@ def update_facebook_container(n_clicks, value):
                 dbc.Card(
                     dbc.CardBody(
                         [
-                            dbc.CardTitle(html.H5('POSTS ({})'.format(df_row))),
-                            dbc.CardText(dashtable.DataTable(
+                            html.H5('POSTS ({})'.format(df_row), className='card-title'),
+                            html.Div(dashtable.DataTable(
                                 data=df_original.to_dict('rows'),
                                 columns=[{'id': i, 'name': i} for i in df_original.columns],
                                 style_table={
                                     'maxHeight': 300,
                                     'overflowY': 'scroll'
                                 },
-                                n_fixed_rows=1,
+                                fixed_rows=1,
                                 style_cell={
                                     # all three widths are needed
                                     'maxWidth': '100px',
@@ -522,8 +514,8 @@ def update_facebook_container(n_clicks, value):
                 dbc.Card(
                     dbc.CardBody(
                         [
-                            dbc.CardTitle(html.H5('WORD FREQUENCY')),
-                            dbc.CardText(
+                            html.H5('WORD FREQUENCY', className='card-title'),
+                            html.Div(
                                 [
                                     dcc.Graph(
                                         figure=go.Figure(

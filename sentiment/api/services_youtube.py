@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 
-api_key = 'AIzaSyD9xwls_UC1qFXe5AiZOuQ34DMBAyyypPg'
+api_key = 'AIzaSyDzjtGPAAvfgVkCQB6RLuL4scrVKv7jI10'
 
 
 # # # # YOUTUBE COMMENTS ANALYSER # # # #
