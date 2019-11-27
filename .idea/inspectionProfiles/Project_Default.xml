@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="34">
+          <list size="100">
             <item index="0" class="java.lang.String" itemvalue="youtube-python" />
             <item index="1" class="java.lang.String" itemvalue="rsa" />
             <item index="2" class="java.lang.String" itemvalue="decorator" />
@@ -39,6 +39,72 @@
             <item index="31" class="java.lang.String" itemvalue="Flask-RESTful" />
             <item index="32" class="java.lang.String" itemvalue="textblob" />
             <item index="33" class="java.lang.String" itemvalue="google-auth" />
+            <item index="34" class="java.lang.String" itemvalue="traitlets" />
+            <item index="35" class="java.lang.String" itemvalue="bs4" />
+            <item index="36" class="java.lang.String" itemvalue="tweepy" />
+            <item index="37" class="java.lang.String" itemvalue="html5lib" />
+            <item index="38" class="java.lang.String" itemvalue="emoji" />
+            <item index="39" class="java.lang.String" itemvalue="scikit-learn" />
+            <item index="40" class="java.lang.String" itemvalue="nltk" />
+            <item index="41" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="42" class="java.lang.String" itemvalue="Click" />
+            <item index="43" class="java.lang.String" itemvalue="srsly" />
+            <item index="44" class="java.lang.String" itemvalue="facebook-scraper" />
+            <item index="45" class="java.lang.String" itemvalue="ftfy" />
+            <item index="46" class="java.lang.String" itemvalue="ipython-genutils" />
+            <item index="47" class="java.lang.String" itemvalue="spacy" />
+            <item index="48" class="java.lang.String" itemvalue="appdirs" />
+            <item index="49" class="java.lang.String" itemvalue="oauthlib" />
+            <item index="50" class="java.lang.String" itemvalue="fake-useragent" />
+            <item index="51" class="java.lang.String" itemvalue="lxml" />
+            <item index="52" class="java.lang.String" itemvalue="soupsieve" />
+            <item index="53" class="java.lang.String" itemvalue="beautifulsoup4" />
+            <item index="54" class="java.lang.String" itemvalue="ijson" />
+            <item index="55" class="java.lang.String" itemvalue="plac" />
+            <item index="56" class="java.lang.String" itemvalue="Pyphen" />
+            <item index="57" class="java.lang.String" itemvalue="cymem" />
+            <item index="58" class="java.lang.String" itemvalue="PySocks" />
+            <item index="59" class="java.lang.String" itemvalue="cssselect" />
+            <item index="60" class="java.lang.String" itemvalue="cytoolz" />
+            <item index="61" class="java.lang.String" itemvalue="retrying" />
+            <item index="62" class="java.lang.String" itemvalue="textacy" />
+            <item index="63" class="java.lang.String" itemvalue="murmurhash" />
+            <item index="64" class="java.lang.String" itemvalue="msgpack" />
+            <item index="65" class="java.lang.String" itemvalue="idna" />
+            <item index="66" class="java.lang.String" itemvalue="requests-html" />
+            <item index="67" class="java.lang.String" itemvalue="jupyter-core" />
+            <item index="68" class="java.lang.String" itemvalue="wasabi" />
+            <item index="69" class="java.lang.String" itemvalue="networkx" />
+            <item index="70" class="java.lang.String" itemvalue="python-Levenshtein" />
+            <item index="71" class="java.lang.String" itemvalue="wcwidth" />
+            <item index="72" class="java.lang.String" itemvalue="requests" />
+            <item index="73" class="java.lang.String" itemvalue="w3lib" />
+            <item index="74" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="75" class="java.lang.String" itemvalue="preshed" />
+            <item index="76" class="java.lang.String" itemvalue="requests-oauthlib" />
+            <item index="77" class="java.lang.String" itemvalue="blis" />
+            <item index="78" class="java.lang.String" itemvalue="urllib3" />
+            <item index="79" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="80" class="java.lang.String" itemvalue="pyee" />
+            <item index="81" class="java.lang.String" itemvalue="websockets" />
+            <item index="82" class="java.lang.String" itemvalue="Flask" />
+            <item index="83" class="java.lang.String" itemvalue="scipy" />
+            <item index="84" class="java.lang.String" itemvalue="six" />
+            <item index="85" class="java.lang.String" itemvalue="pyppeteer" />
+            <item index="86" class="java.lang.String" itemvalue="nbformat" />
+            <item index="87" class="java.lang.String" itemvalue="parse" />
+            <item index="88" class="java.lang.String" itemvalue="Flask-Compress" />
+            <item index="89" class="java.lang.String" itemvalue="singledispatch" />
+            <item index="90" class="java.lang.String" itemvalue="chardet" />
+            <item index="91" class="java.lang.String" itemvalue="tqdm" />
+            <item index="92" class="java.lang.String" itemvalue="pyemd" />
+            <item index="93" class="java.lang.String" itemvalue="dash-table" />
+            <item index="94" class="java.lang.String" itemvalue="toolz" />
+            <item index="95" class="java.lang.String" itemvalue="Unidecode" />
+            <item index="96" class="java.lang.String" itemvalue="thinc" />
+            <item index="97" class="java.lang.String" itemvalue="pytz" />
+            <item index="98" class="java.lang.String" itemvalue="pyquery" />
+            <item index="99" class="java.lang.String" itemvalue="webencodings" />
           </list>
         </value>
       </option>

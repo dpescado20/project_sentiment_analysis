@@ -74,6 +74,7 @@ singledispatch==3.4.0.3
 six==1.12.0
 soupsieve==1.8
 spacy==2.1.1
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz#egg=en_core_web_sm
 srsly==0.0.5
 textacy==0.6.2
 thinc==7.0.4

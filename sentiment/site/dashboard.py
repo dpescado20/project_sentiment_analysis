@@ -11,7 +11,7 @@ __navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink('API', href='/api/', external_link=True))
     ],
-    brand='SOCIAL MEDIA ANALYTICS',
+    brand='SENTIMENT ANALYZER',
     brand_href='#',
     sticky='top'
 )
@@ -198,19 +198,19 @@ def update_twitter_container(n_clicks, value):
                         )
                     )
                 ),
-                dbc.Col(
-                    dbc.Card(
-                        dbc.CardBody(
-                            [
-                                dbc.CardTitle(html.H5('METRICS')),
-                                dbc.CardText([
-                                    html.H5('CONFUSION MATRIX'),
-                                    html.H5('CLASSIFICATION REPORT')
-                                ])
-                            ]
-                        )
-                    )
-                )
+                # dbc.Col(
+                #    dbc.Card(
+                #        dbc.CardBody(
+                #            [
+                #                dbc.CardTitle(html.H5('METRICS')),
+                #                dbc.CardText([
+                #                    html.H5('CONFUSION MATRIX'),
+                #                    html.H5('CLASSIFICATION REPORT')
+                #                ])
+                #            ]
+                #        )
+                #    )
+                # )
             ]
         ),
         html.Br(),
@@ -333,19 +333,19 @@ def update_youtube_container(n_clicks, value):
                     )
 
                 ),
-                dbc.Col(
-                    dbc.Card(
-                        dbc.CardBody(
-                            [
-                                dbc.CardTitle(html.H5('METRICS')),
-                                dbc.CardText([
-                                    html.H5('CONFUSION MATRIX'),
-                                    html.H5('CLASSIFICATION REPORT')
-                                ])
-                            ]
-                        )
-                    )
-                )
+                # dbc.Col(
+                #     dbc.Card(
+                #        dbc.CardBody(
+                #            [
+                #                dbc.CardTitle(html.H5('METRICS')),
+                #                dbc.CardText([
+                #                    html.H5('CONFUSION MATRIX'),
+                #                    html.H5('CLASSIFICATION REPORT')
+                #                ])
+                #            ]
+                #        )
+                #    )
+                # )
             ]
         ),
         html.Br(),
@@ -467,19 +467,19 @@ def update_facebook_container(n_clicks, value):
                     )
 
                 ),
-                dbc.Col(
-                    dbc.Card(
-                        dbc.CardBody(
-                            [
-                                dbc.CardTitle(html.H5('METRICS')),
-                                dbc.CardText([
-                                    html.H5('CONFUSION MATRIX'),
-                                    html.H5('CLASSIFICATION REPORT')
-                                ])
-                            ]
-                        )
-                    )
-                )
+                # dbc.Col(
+                #    dbc.Card(
+                #        dbc.CardBody(
+                #            [
+                #                dbc.CardTitle(html.H5('METRICS')),
+                #                dbc.CardText([
+                #                    html.H5('CONFUSION MATRIX'),
+                #                    html.H5('CLASSIFICATION REPORT')
+                #                ])
+                #            ]
+                #        )
+                #    )
+                # )
             ]
         ),
         html.Br(),
