@@ -32,7 +32,7 @@ class Sentiment(Resource):
 class Sentiment(Resource):
     def get(self):
         """
-        Returns Sentiment Score of given Text
+        Returns F1 Score of the Classifier
         """
         return True
 
@@ -41,7 +41,7 @@ class Sentiment(Resource):
 class Sentiment(Resource):
     def get(self):
         """
-        Returns Bag of Words of given Text
+        Returns Precision Value of the Classifier
         """
         return True
 
@@ -50,7 +50,7 @@ class Sentiment(Resource):
 class Sentiment(Resource):
     def get(self):
         """
-        Returns Bag of Words of given Text
+        Returns Recall Value of the Classifier
         """
         return True
 
@@ -59,7 +59,7 @@ class Sentiment(Resource):
 class Sentiment(Resource):
     def get(self):
         """
-        Returns Bag of Words of given Text
+        Returns Classification Report of the Classifier
         """
         return True
 
@@ -68,6 +68,6 @@ class Sentiment(Resource):
 class Sentiment(Resource):
     def get(self):
         """
-        Returns Bag of Words of given Text
+        Returns Confusion Matrix of the Classifier
         """
         return True
